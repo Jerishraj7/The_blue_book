@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+</head>
+<body>
+    <header>
+        <link rel="stylesheet" href="bluebook.css">
+        <div id="main" class="logo">
+            <img src="LOGO.png" alt="Logo">
+            <h1> The Blue Book</h1>
+        </div>
+    </header>
+
+
+        <section id="signup" class="signup-section">
+            <div class="signup-container">
+                <!-- Photo Section -->
+                <div class="signup-photo">
+                    <img src="frontend.jpeg" alt="Signup Image" >
+                </div>
+        
+                <!-- Form Section -->
+                <div class="signup-form-container ">
+                    <h2>Create an Account</h2>
+                    <div class="signup-form">
+                        <!-- Name Field -->
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                        <br>
+        
+                        <!-- Email Field -->
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                        <br>
+        
+                        <!-- Password Field -->
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                        <br>
+        
+                        <!-- Age Field -->
+                        <label for="age">Age:</label>
+                        <input type="number" id="age" name="age" placeholder="Enter your age" required>
+                        <br>
+        
+                        <!-- Submit Button -->
+                        <button class="cta-button" onclick="signup()">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    
+        
+    </div>
+    <footer>
+         <h2>Contact: +353 870311147</h2>
+        <p>&copy; 2025 Blue Book Coupons. All Rights Reserved.</p>
+
+    </footer>
+
+    <!-- JavaScript For Calling the API -->
+  <script>
+    function signup() {
+
+      console.log("Signing up");
+      // Get form field values
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const age = document.getElementById('age').value;
+
+      console.log(name, email, password, age);
+
+      // Create a data object to send
+      const data = {
+        name: name,
+        email: email,
+        password: password,
+        age: age
+      };
+
+      console.log(data);
+
+      // Call your API with a POST request using fetch
+      fetch('http://localhost:3000/api/signup', { // Replace with your API URL
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Success:', data);
+        window.location.href = "signin.html";
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+    }
+  </script>
+
+
+</body>
+
+
+
+    
+
+
+    
+</body>
+</html>
