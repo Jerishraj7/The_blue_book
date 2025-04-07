@@ -15,3 +15,16 @@
     padding: 20px;
     overflow-x: auto;
   }
+  .cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+  }
+  
+  .cart-table th,
+  .cart-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+  
