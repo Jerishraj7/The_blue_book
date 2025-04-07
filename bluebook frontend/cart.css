@@ -146,3 +146,24 @@ nav ul li a {
     width: 100%;
     border-radius: 10px;
 }
+.cta-button {
+    display: inline-block;
+    background: #18831a;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.Aboutus {
+    text-align: center;
+
+}
+
+footer {
+    background: #18831a;
+    color: white;
+    padding: 10px;
+    margin-top: 20px;
+    text-align: center;
+}
