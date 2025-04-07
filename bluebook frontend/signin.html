@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In Page</title>
+  <link rel="stylesheet" href="bluebook.css">
+</head>
+<body>
+  <header>
+    <div id="main" class="logo">
+      <img src="LOGO.png" alt="Logo">
+      <h1> The Blue Book</h1>
+    </div>
+  </header>
+
+  <centre>
+    <section id="signin" class="signin-section">
+      <h2>Sign In to Your Account</h2>
+    </section>
+  </centre>
+
+  <div class="signin-form">
+    <!-- Email Field -->
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+    <br>
+    <!-- Password Field -->
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+    <br>
+    <!-- Submit Button -->
+    <button class="cta-button" onclick="signin()">Sign In</button>
+  </div>
+
+  <footer>
+    <h2>Contact: +353 870311147</h2>
+    <p>&copy; 2025 Blue Book Coupons. All Rights Reserved.</p>
+  </footer>
+
+     <!-- JavaScript For Calling the API -->
+     <script>
+      function signin() {
+  
+        console.log("Signing in");
+
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+  
+        console.log(email, password);
+  
+        // Create a data object to send
+        const data = {
+          email: email,
+          password: password
+        };
+  
+        console.log(data);
+  
+        // Call your API with a POST request using fetch
+        fetch('http://localhost:3000/api/login', { // Replace with your API URL
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          } else if (response.status == 400){
+            
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log('Success:', data);
+          var userId = data.id;
+          window.location.href = "index.html?userId=" + userId;
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+      }
+    </script>
+
+</body>
+</html>
