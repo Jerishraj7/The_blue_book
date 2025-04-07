@@ -233,3 +233,25 @@ footer {
     padding: 40px;
     text-align: center;
   }
+  .signin-form {
+    width: 350px;
+    margin: 20px auto;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  .signin-form label {
+    display: block;
+    margin-top: 20px;
+    font-weight: bold;
+  }
+  
+  .signin-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 25px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+  }
