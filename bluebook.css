@@ -112,3 +112,26 @@ footer {
         height: auto; /* Maintain the aspect ratio */
         border-radius: 10px; /* Optional for rounded corners */
     }
+    .signup-form-container {
+        flex: 1; /* Take up half of the available space */
+        padding: 40px;
+        text-align: left;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .signup-form label {
+        display: block;
+        margin: 10px 0 5px;
+        font-weight: bold;
+    }
+    
+    .signup-form input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
