@@ -134,4 +134,18 @@ footer {
         border: 1px solid #ccc;
         border-radius: 5px;
     }
+    .signup-form button {
+        display: block;
+        width: 100%;
+        background: #18831a;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
     
+    .signup-form button:hover {
+        background: #145e16;
+    }
