@@ -27,4 +27,21 @@
     text-align: center;
     border-bottom: 1px solid #ddd;
   }
+  .cart-product-img {
+    width: 80px;
+    height: auto;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
   
+  .product-name {
+    vertical-align: middle;
+    font-weight: bold;
+  }
+  
+  /* Quantity Input */
+  .cart-quantity {
+    width: 60px;
+    padding: 5px;
+    text-align: center;
+  }
