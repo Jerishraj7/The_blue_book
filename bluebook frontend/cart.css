@@ -57,4 +57,24 @@
   .cart-summary p {
     margin: 10px 0;
   }
+  .cta-button {
+    display: block;
+    width: 100%;
+    background: #18831a;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
   
+  .cta-button:hover {
+    background: #145e16;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    margin:0px;
+    padding:0px;
+}
