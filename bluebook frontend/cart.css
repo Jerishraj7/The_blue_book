@@ -255,3 +255,29 @@ footer {
     border: 1px solid #ccc;
     border-radius: 15px;
   }
+  .cta-button {
+    display: block;
+    width: 100%;
+    background: #18831a;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .cta-button:hover {
+    background: #145e16;
+  }
+
+  .cta-button2 {
+    display: flexbox;
+    width: 25%;
+    background: #18831a;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+  
