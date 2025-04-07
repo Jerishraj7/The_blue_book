@@ -167,3 +167,27 @@ footer {
     margin-top: 20px;
     text-align: center;
 }
+.signup-section {
+    display: flex; /* Use flexbox for layout */
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background: #f4f4f4;
+}
+
+.signup-container {
+    display: flex; /* Align photo and form side by side */
+    width: 80%; /* Set the width of the container */
+}
+
+.signup-photo {
+    flex: 1; /* Take up half of the available space */
+    text-align: center;
+}
+
+.signup-photo img {
+    max-width: 100%; /* Make the image responsive */
+    height: auto; /* Maintain the aspect ratio */
+    border-radius: 10px; /* Optional for rounded corners */
+}
+
