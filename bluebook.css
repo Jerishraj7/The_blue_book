@@ -1,0 +1,15 @@
+body {
+    font-family: Arial, sans-serif;
+    margin:0px;
+    padding:0px;
+}
+header {
+    background: #18831a;
+    color: white;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    font-size: 100%;
+    cursor: pointer;
+    
+}
