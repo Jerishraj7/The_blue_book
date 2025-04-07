@@ -78,3 +78,28 @@
     margin:0px;
     padding:0px;
 }
+header {
+    background: #18831a;
+    color: white;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    font-size: 100%;
+    cursor: pointer;
+    
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    
+}
+.logo img {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+}
+.logo h1 {
+    margin: 0;
+    font-size: 30px;
+}
