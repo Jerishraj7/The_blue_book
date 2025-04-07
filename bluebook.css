@@ -169,3 +169,27 @@ footer {
         margin-top: 20px;
         font-weight: bold;
       }
+      .signin-form input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 25px;
+        border: 1px solid #ccc;
+        border-radius: 15px;
+      }
+      
+      .cta-button {
+        display: block;
+        width: 100%;
+        background: #18831a;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      
+      .cta-button:hover {
+        background: #145e16;
+      }
+      
+    
