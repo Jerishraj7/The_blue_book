@@ -45,3 +45,16 @@
     padding: 5px;
     text-align: center;
   }
+  .cart-summary {
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px auto;
+    text-align: right;
+    font-family: Arial, sans-serif;
+  }
+  
+  .cart-summary h3,
+  .cart-summary p {
+    margin: 10px 0;
+  }
+  
