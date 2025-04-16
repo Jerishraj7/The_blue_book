@@ -31,7 +31,10 @@
     <br>
     <!-- Submit Button -->
     <button class="cta-button" onclick="signin()">Sign In</button>
-  </div>
+    <p>If you don't have an account >>> <button href="#" onclick="goToSignup()">Signup</button></p>
+
+    </div>
+    
 
   <footer>
     <h2>Contact: +353 870311147</h2>
@@ -40,6 +43,13 @@
 
      <!-- JavaScript For Calling the API -->
      <script>
+
+       function goToSignup() {
+    window.location.href = "/signup/index.html";
+      }
+
+      const url = "http://localhost:3000"
+
       function signin() {
   
         console.log("Signing in");
@@ -58,7 +68,7 @@
         console.log(data);
   
         // Call your API with a POST request using fetch
-        fetch('http://localhost:3000/api/login', { // Replace with your API URL
+        fetch(url+'/api/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -76,7 +86,7 @@
         .then(data => {
           console.log('Success:', data);
           var userId = data.id;
-          window.location.href = "index.html?userId=" + userId;
+          window.location.href = "/home.html?userId=" + userId;
         })
         .catch((error) => {
           console.error('Error:', error);
