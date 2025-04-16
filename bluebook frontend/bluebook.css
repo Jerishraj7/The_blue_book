@@ -13,6 +13,7 @@ header {
     cursor: pointer;
     
 }
+
 .logo {
     display: flex;
     align-items: center;
@@ -89,107 +90,175 @@ footer {
     padding: 10px;
     margin-top: 20px;
     text-align: center;
-    .signup-section {
-        display: flex; /* Use flexbox for layout */
-        align-items: center;
-        justify-content: center;
-        padding: 40px;
-        background: #f4f4f4;
-    }
-    
-    .signup-container {
-        display: flex; /* Align photo and form side by side */
-        width: 80%; /* Set the width of the container */
-    }
-    
-    .signup-photo {
-        flex: 1; /* Take up half of the available space */
-        text-align: center;
-    }
-    
-    .signup-photo img {
-        max-width: 100%; /* Make the image responsive */
-        height: auto; /* Maintain the aspect ratio */
-        border-radius: 10px; /* Optional for rounded corners */
-    }
-    .signup-form-container {
-        flex: 1; /* Take up half of the available space */
-        padding: 40px;
-        text-align: left;
-        background: white;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    
-    .signup-form label {
-        display: block;
-        margin: 10px 0 5px;
-        font-weight: bold;
-    }
-    
-    .signup-form input {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
-    .signup-form button {
-        display: block;
-        width: 100%;
-        background: #18831a;
-        color: white;
-        border: none;
-        padding: 10px;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-    }
-    
-    .signup-form button:hover {
-        background: #145e16;
-    }
-    .signin-section {
-        background: #f4f4f4;
-        padding: 40px;
-        text-align: center;
-      }
-      
-      .signin-form {
-        width: 350px;
-        margin: 20px auto;
-        background: white;
-        padding: 40px;
-        border-radius: 20px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      }
-      
-      .signin-form label {
-        display: block;
-        margin-top: 20px;
-        font-weight: bold;
-      }
-      .signin-form input {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 25px;
-        border: 1px solid #ccc;
-        border-radius: 15px;
-      }
-      
-      .cta-button {
-        display: block;
-        width: 100%;
-        background: #18831a;
-        color: white;
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-      
-      .cta-button:hover {
-        background: #145e16;
-      }
-      
-    
+}
+.signup-section {
+    display: flex; /* Use flexbox for layout */
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background: #f4f4f4;
+}
+
+.signup-container {
+    display: flex; /* Align photo and form side by side */
+    width: 80%; /* Set the width of the container */
+}
+
+.signup-photo {
+    flex: 1; /* Take up half of the available space */
+    text-align: center;
+}
+
+.signup-photo img {
+    max-width: 100%; /* Make the image responsive */
+    height: auto; /* Maintain the aspect ratio */
+    border-radius: 10px; /* Optional for rounded corners */
+}
+
+.signup-form-container {
+    flex: 1; /* Take up half of the available space */
+    padding: 40px;
+    text-align: left;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.signup-form label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+.signup-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.signup-form button {
+    display: block;
+    width: 100%;
+    background: #18831a;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.signup-form button:hover {
+    background: #145e16;
+}
+
+.signin-section {
+    background: #f4f4f4;
+    padding: 40px;
+    text-align: center;
+  }
+  
+  .signin-form {
+    width: 350px;
+    margin: 20px auto;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  .signin-form label {
+    display: block;
+    margin-top: 20px;
+    font-weight: bold;
+  }
+  
+  .signin-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 25px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+  }
+  
+  .cta-button {
+    display: block;
+    width: 50%;
+    background: #18831a;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: auto;
+  }
+  
+  .cta-button:hover {
+    background: #145e16;
+  }
+
+  .username {
+    border-style: double;
+    padding: 5px;
+  
+  }
+  /* Cart Section Styling */
+.cart-section {
+    background: #f4f4f4;
+    padding: 40px;
+    text-align: center;
+  }
+  
+  /* Container for the Cart Table */
+  .cart-container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    padding: 20px;
+    overflow-x: auto;
+  }
+  
+  /* Cart Table Styling */
+  .cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+  }
+  
+  .cart-table th,
+  .cart-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+/* Cart Summary Section */
+.cart-summary {
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px auto;
+    text-align: right;
+    font-family: Arial, sans-serif;
+  }
+  
+  .cart-summary h3,
+  .cart-summary p {
+    margin: 10px 0;
+  }
+  
+  /* Reuse your existing CTA Button styling */
+  .cta-button {
+    display: block;
+    width: 100%;
+    background: #18831a;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
