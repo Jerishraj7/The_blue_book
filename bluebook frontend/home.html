@@ -19,9 +19,8 @@
         <nav>
             <ul>
                 <li><a href="#home">Home |</a></li>
-                <li><a href="#Cart">My cart |</a></li>
-                <li><a href="#About us">About Us |</a></li>
-                <li><a href="#Contact">Contact</a></li>
+                <li><a href="#myCart">My cart |</a></li>
+                <li><b id="username" class="username">Welcome Guest</b></li>
             </ul>
         </nav>
     </header>
@@ -40,22 +39,59 @@
             <img src="ROOM VOUCHER.png"height="300px" width="250px" alt="Hotel Voucher">
             <h3>Luxury Hotel Stay</h3>
             <p>Save up to 50% on luxury hotel stays.</p>
-            <a href="#" class="cta-button">Get Voucher</a>
+            <p>Price: € 100</p>
+            <a href="#" class="cta-button" id="67f828b5defd800ee807dc0a" onclick="addProductToCart(this)">Get Voucher</a>
         </div>
         <div class="voucher">
             <img src="FOOD VOUCHER.png" height="300px" width="250px" alt="Dining Voucher">
             <h3>Fine Dining Experience</h3>
             <p>Enjoy a gourmet meal at top-rated restaurants.</p>
-            <a href="#" class="cta-button">Get Voucher</a>
+            <p>Price: € 50</p>
+            <a href="#" class="cta-button" id="67f828dbdefd800ee807dc0c" onclick="addProductToCart(this)">Get Voucher</a>
         </div>
         <div class="voucher">
             <img src="massage.png" height="300px" width="250px" alt="Massage Voucher">
             <h3>Best Relaxation Ever</h3>
             <p>Upto 70% Off on Spa Deals.</p>
-            <a href="#" class="cta-button">Get Voucher</a>
+            <p>Price: € 25</p>
+            <a href="#" class="cta-button" id="67f828f4defd800ee807dc0e" onclick="addProductToCart(this)">Get Voucher</a>
         </div>
     </section>
     <br>
+
+    <!-- Cart Section Title -->
+  <centre>
+    <section id="myCart" class="cart-section">
+      <h2>Your Shopping Cart</h2>
+    </section>
+  </centre>
+
+  <!-- Cart Items Table -->
+  <div   class="cart-container">
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Cart Summary -->
+  <div class="cart-summary">
+    <h3>Cart Summary</h3>
+    <h3 id="cart-total">&euro;0.00</h3>
+    
+    <button class="cta-button2">Proceed to Checkout</button>
+  </div>
+
    <div class="Aboutus">
     <h1>
         About us
@@ -69,5 +105,234 @@
         <p>&copy; 2025 Blue Book Coupons. All Rights Reserved.</p>
 
     </footer>
+
+    <script>
+
+        var userId = null;
+
+        const url = "http://localhost:3000"
+        // Loading username
+        document.addEventListener("DOMContentLoaded", async () => {
+           
+
+            const url = window.location.href;
+            const queryParams = new URLSearchParams(new URL(url).search);
+            userId = queryParams.get("userId");
+            // Initialize the application
+            await initializeWelcomeMessage();
+
+            loadCart(userId);
+            
+        });
+
+
+
+        async function initializeWelcomeMessage(){
+
+            const welcomeElement = document.querySelector("#username"); 
+
+            const url = window.location.href;
+            const queryParams = new URLSearchParams(new URL(url).search);
+            const userId = queryParams.get("userId");
+
+            if (userId) {
+                console.log("User ID:", userId);
+            } else {
+                console.log("User ID not found in the URL");
+            }
+
+            try {
+                const response = await fetch(url+"/api/users/"+userId);
+
+                console.log("getUserResponse", response);
+
+                if (response.ok) {
+                    console.log("GetUserResponseOK");
+                    const data = await response.json();
+                    console.log("getUser", data);
+
+                    if (data.name) {
+                        welcomeElement.textContent = `Welcome, ${data.name}`;
+                    }
+                } else {
+                    console.log("Request Failed");
+                }
+
+
+                
+
+            } catch (error){
+                console.error("Error fetching user name:", error);
+            }  
+            
+        }
+
+        function loadCart(userId){
+
+            fetch(url+"/api/cart/"+ userId, {
+                method: 'GET'
+            }) 
+                .then(response => response.json())
+                .then(data => {
+                    populateCart(data);
+                })
+                .catch(error => {
+                    console.error("Error adding to Cart :", error);
+                });
+        }
+
+
+        function addProductToCart(element){
+
+            
+            const productId = element.id;
+            
+            const data = {
+                productId: productId,
+                quantity: 1
+            }
+
+            
+
+            fetch(url+"/api/cart/"+userId, {
+                method: 'POST',
+                headers: {
+                    'Content-Type':"application/json"
+                },
+                body: JSON.stringify(data)
+            }) 
+                .then(response => response.json())
+                .then(data => {
+                    populateCart(data);
+                })
+                .catch(error => {
+                    console.error("Error adding to Cart :", error);
+                });
+            
+
+        }
+
+
+        function addProductInCart(product){
+            
+            console.log("product", product);
+
+            // Select the table body
+            const tableBody = document.querySelector('.cart-table tbody');
+
+            // Create a new row
+            const row = document.createElement('tr');
+
+            // Create and append cells
+            const nameTd = document.createElement('td');
+            const nameSpan = document.createElement('span');
+            nameSpan.className = 'product-name';
+            nameSpan.textContent = product.name;
+            nameTd.appendChild(nameSpan);
+
+            const descriptionTd = document.createElement('td');
+            descriptionTd.textContent = product.description;
+
+            const priceTd = document.createElement('td');
+            priceTd.innerHTML = `&euro;${product.price.toFixed(2)}`;
+
+            const quantityTd = document.createElement('td');
+            const quantityInput = document.createElement('input');
+            quantityInput.type = 'number';
+            quantityInput.className = 'cart-quantity';
+            quantityInput.value = product.quantity;
+            quantityInput.min = '1';
+            quantityInput.max = product.quantity.toString();
+            quantityTd.appendChild(quantityInput);
+
+            const totalTd = document.createElement('td');
+            totalTd.innerHTML = `&euro;${(product.price * product.quantity).toFixed(2)}`;
+
+            const deleteTd = document.createElement('td');
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            console.log("DELETEID", product._id);
+            deleteButton.id = product._id;
+            deleteTd.appendChild(deleteButton);
+
+            // Append cells to the row
+            row.appendChild(nameTd);
+            row.appendChild(descriptionTd);
+            row.appendChild(priceTd);
+            row.appendChild(quantityTd);
+            row.appendChild(totalTd);
+            row.appendChild(deleteTd);
+
+            // Append the row to the table body
+            tableBody.appendChild(row);
+
+            // Add delete functionality
+            deleteButton.onclick =  function(event) {
+                deleteProductFromCart(event.target);
+            }
+        }
+
+
+        async function populateCart(cart){
+            
+            // Select the table body
+            const tableBody = document.querySelector('.cart-table tbody');
+            tableBody.innerHTML = '';
+            let totalPrice = 0.0;
+
+            for(product of cart.products){
+                console.log(product);
+                const thisproduct = await getProduct(product.productId);
+                thisproduct.quantity = product.quantity
+                totalPrice = totalPrice + thisproduct.price;
+                addProductInCart(thisproduct);
+            }
+
+
+            const cartTotalElement = document.getElementById('cart-total'); // Select the total price element
+            cartTotalElement.innerHTML = `Total Price: &euro;${totalPrice.toFixed(2)}`;   
+
+        }
+
+        async function getProduct(productId) {
+            try {
+                const response = await fetch(url+`/api/products/${productId}`); // Replace with your actual API URL
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json(); // Parse and return the JSON data
+                return data; // Ensure the product data is properly returned
+            } catch (error) {
+                console.error("Error getting Product:", error);
+                throw error; // Ensure errors propagate properly for handling in caller functions
+            }
+        }
+
+        function deleteProductFromCart(element){
+
+            
+            const productId = element.id;
+            console.log("deleteFromCart", productId);
+            
+
+            fetch(url+"/api/cart/"+userId+"/"+productId, {
+                method: 'DELETE',
+            }) // Replace this with your actual API URL
+                .then(response => response.json())
+                .then(data => {
+                    console.log("deletedProductFromCart", data);
+                    populateCart(data);
+                })
+                .catch(error => {
+                    console.error("Error adding to Cart :", error);
+                });
+            
+            
+        }
+
+
+
+    </script>
 </body>
 </html>
+
