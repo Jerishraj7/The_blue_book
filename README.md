@@ -5,7 +5,7 @@ This project is a web-based voucher and cart management system, designed to simp
 
 ---
 
-## 📌 Features
+## Features
 
 - Create, view, and delete vouchers
 - Add vouchers to cart and view cart contents
@@ -16,7 +16,7 @@ This project is a web-based voucher and cart management system, designed to simp
 
 ---
 
-## ⚙️ Technologies Used
+## Technologies Used
 
 - **Frontend:** HTML, CSS, JavaScript (Fetch API)
 - **Backend:** Node.js, Express.js
@@ -25,7 +25,7 @@ This project is a web-based voucher and cart management system, designed to simp
 
 ---
 
-## 🚀 How to Run This Project
+## How to Run This Project
 
 ### 1. Clone the repository:
 ```bash
@@ -60,7 +60,7 @@ POST /api/cart – Add to cart
 
 GET /api/cart – View cart
 
-🧪 Testing
+Testing
 Use Postman to test API endpoints like:
 
 Creating a voucher
@@ -69,7 +69,7 @@ Adding a voucher to the cart
 
 Viewing cart contents
 
-📈 Future Improvements
+Future Improvements
 Admin login & authentication
 
 Export cart data to CSV
@@ -78,7 +78,7 @@ Add reporting dashboard
 
 Dockerize the app for production
 
-📎 Author
+Author
 Jerish Raj Arockiasamy
 Student ID: 20055825
 Technological University of Dublin
@@ -89,7 +89,7 @@ Edit
 
 ---
 
-### 💡 How to Add README to GitHub
+###How to Add README to GitHub
 
 1. Save the file as `README.md` inside your project folder.
 2. In VS Code:
