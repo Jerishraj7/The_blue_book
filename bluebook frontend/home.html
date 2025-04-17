@@ -108,78 +108,59 @@
 
     <script>
 
-        var userId = null;
+var userId = null;
+const baseUrl = "http://localhost:3000"; // Correct API base URL
 
-        const url = "http://localhost:3000"
-        // Loading username
-        document.addEventListener("DOMContentLoaded", async () => {
-           
+// Loading username when DOM is fully loaded
+document.addEventListener("DOMContentLoaded", async () => {
+  const currentUrl = window.location.href;
+  const queryParams = new URLSearchParams(new URL(currentUrl).search);
+  userId = queryParams.get("userId");
 
-            const url = window.location.href;
-            const queryParams = new URLSearchParams(new URL(url).search);
-            userId = queryParams.get("userId");
-            // Initialize the application
-            await initializeWelcomeMessage();
+  await initializeWelcomeMessage();
+  loadCart(userId);
+});
 
-            loadCart(userId);
-            
-        });
+async function initializeWelcomeMessage() {
+  const welcomeElement = document.querySelector("#username");
 
+  if (!userId) {
+    console.log("User ID not found in the URL");
+    return;
+  }
 
+  try {
+    const response = await fetch(`${baseUrl}/api/users/${userId}`);
+    console.log("getUserResponse", response);
 
-        async function initializeWelcomeMessage(){
+    if (response.ok) {
+      const data = await response.json();
+      console.log("getUser", data);
 
-            const welcomeElement = document.querySelector("#username"); 
+      if (data.name) {
+        welcomeElement.textContent = `Welcome, ${data.name}`;
+      } else {
+        welcomeElement.textContent = "Welcome, User";
+      }
+    } else {
+      console.log("Failed to fetch user");
+    }
+  } catch (error) {
+    console.error("Error fetching user name:", error);
+  }
+}
 
-            const url = window.location.href;
-            const queryParams = new URLSearchParams(new URL(url).search);
-            const userId = queryParams.get("userId");
+function loadCart(userId) {
+  fetch(`${baseUrl}/api/cart/${userId}`, { method: 'GET' })
+    .then(response => response.json())
+    .then(data => {
+      populateCart(data);
+    })
+    .catch(error => {
+      console.error("Error loading cart:", error);
+    });
+}
 
-            if (userId) {
-                console.log("User ID:", userId);
-            } else {
-                console.log("User ID not found in the URL");
-            }
-
-            try {
-                const response = await fetch(url+"/api/users/"+userId);
-
-                console.log("getUserResponse", response);
-
-                if (response.ok) {
-                    console.log("GetUserResponseOK");
-                    const data = await response.json();
-                    console.log("getUser", data);
-
-                    if (data.name) {
-                        welcomeElement.textContent = `Welcome, ${data.name}`;
-                    }
-                } else {
-                    console.log("Request Failed");
-                }
-
-
-                
-
-            } catch (error){
-                console.error("Error fetching user name:", error);
-            }  
-            
-        }
-
-        function loadCart(userId){
-
-            fetch(url+"/api/cart/"+ userId, {
-                method: 'GET'
-            }) 
-                .then(response => response.json())
-                .then(data => {
-                    populateCart(data);
-                })
-                .catch(error => {
-                    console.error("Error adding to Cart :", error);
-                });
-        }
 
 
         function addProductToCart(element){
@@ -335,4 +316,3 @@
     </script>
 </body>
 </html>
-
