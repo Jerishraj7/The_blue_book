@@ -1,100 +1,90 @@
-# The_blue_book
 # The Blue Book – Voucher and Cart Management System
 
-This project is a web-based voucher and cart management system, designed to simplify e-commerce operations. It allows users to create, view, and manage vouchers, as well as add or remove them from a shopping cart.
+## Project Info
+
+The Blue Book is a web-based voucher and cart management system developed as part of the *Programming for Information Systems* module. This system enables users to create and view discount vouchers, add them to a shopping cart, and manage those selections. The backend is powered by Node.js and Express.js, with MongoDB Atlas as the cloud-based NoSQL database. The entire system is deployed on an AWS EC2 instance.
 
 ---
 
-## Features
+## Components
 
-- Create, view, and delete vouchers
-- Add vouchers to cart and view cart contents
-- User registration (sign-up)
-- MongoDB for cloud-based data storage
-- REST API integration between frontend and backend
-- Hosted on AWS EC2
+### Frontend
+- HTML, CSS, and JavaScript
+- Fetch API used to interact with backend
+- Simple UI to list vouchers and interact with the cart
+
+### Backend
+- Built with Node.js and Express.js
+- Modular routes for products, cart, users, and orders
+- Mongoose used to manage MongoDB collections
+
+### Database
+- MongoDB Atlas (NoSQL cloud database)
+- Mongoose schemas for Product, Cart, and User
+
+### Deployment
+- Hosted on AWS EC2 instance
+- GitHub used for version control
 
 ---
 
-## Technologies Used
+## API Endpoints
 
-- **Frontend:** HTML, CSS, JavaScript (Fetch API)
-- **Backend:** Node.js, Express.js
-- **Database:** MongoDB Atlas
-- **Hosting:** AWS EC2 (backend), GitHub (code)
+### Products
+| Method | Endpoint              | Description                    |
+|--------|-----------------------|--------------------------------|
+| POST   | `/api/products`       | Create a new product/voucher   |
+| GET    | `/api/products`       | Retrieve all products          |
+| GET    | `/api/products/:id`   | Get product details by ID      |
+| DELETE | `/api/products/:id`   | Delete a product               |
+
+### Cart
+| Method | Endpoint              | Description                    |
+|--------|-----------------------|--------------------------------|
+| POST   | `/api/cart`           | Add product to cart            |
+| GET    | `/api/cart`           | View cart contents             |
+| DELETE | `/api/cart/:id`       | Remove item from cart          |
+
+### Users
+| Method | Endpoint              | Description                    |
+|--------|-----------------------|--------------------------------|
+| POST   | `/api/signup`         | Register a new user            |
+| GET    | `/api/users/status`   | Check if user is registered    |
 
 ---
 
-## How to Run This Project
+## 🛠️ How to Clone and Run
 
-### 1. Clone the repository:
+### 1. Clone the Repository
+
 ```bash
-git clone https://github.com/yourusername/your-repo-name.git
-cd your-repo-name
-2. Install dependencies:
-bash
-Copy
-Edit
+git clone https://github.com/Jerishraj7/The_blue_book.git
+cd The_blue_book
+```
+
+### 2. Install Dependencies
+
+```bash
 npm install
-3. Set up your .env file:
-Create a .env file in the root folder with the following:
+```
 
-ini
-Copy
-Edit
-MONGO_URI=your-mongodb-uri
+### 3. Create .env File
+
+```bash
+MONGO_URI=your_mongodb_atlas_uri
 PORT=3000
-4. Start the server:
-bash
-Copy
-Edit
+````
+
+### 4. Start the Server
+
+```bash
 node app.js
-📬 API Endpoints (Sample)
-POST /api/products – Create a voucher
+```
 
-GET /api/products – Get all vouchers
+> Your server should be running at http://localhost:3000 or your EC2 public IP.
 
-DELETE /api/products/:id – Delete a voucher
+## Conclusion
 
-POST /api/cart – Add to cart
+The Blue Book project showcases the development of a full-stack information system using modern technologies such as Node.js, Express, MongoDB Atlas, and AWS EC2. It demonstrates key programming concepts like API design, CRUD operations, frontend-backend integration, and cloud deployment. This project serves as a foundational step toward building scalable, cloud-ready applications.
 
-GET /api/cart – View cart
 
-Testing
-Use Postman to test API endpoints like:
-
-Creating a voucher
-
-Adding a voucher to the cart
-
-Viewing cart contents
-
-Future Improvements
-Admin login & authentication
-
-Export cart data to CSV
-
-Add reporting dashboard
-
-Dockerize the app for production
-
-Author
-Jerish Raj Arockiasamy
-Student ID: 20055825
-Technological University of Dublin
-
-yaml
-Copy
-Edit
-
----
-
-###How to Add README to GitHub
-
-1. Save the file as `README.md` inside your project folder.
-2. In VS Code:
-   ```bash
-   git add README.md
-   git commit -m "Add README file"
-   git push
-Go to your GitHub repo → You’ll now see the README displayed on the main page.
